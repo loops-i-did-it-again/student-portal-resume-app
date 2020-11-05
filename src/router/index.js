@@ -11,6 +11,7 @@ import ExperiencesNew from "../views/ExperiencesNew.vue";
 import SkillsNew from "../views/SkillsNew.vue";
 import EducationsEdit from "../views/EducationsEdit.vue";
 import ExperiencesEdit from "../views/ExperiencesEdit.vue";
+import SkillsEdit from "../views/SkillsEdit.vue";
 
 
 Vue.use(VueRouter);
@@ -26,7 +27,8 @@ const routes = [
   { path: '/educations/new', name: 'educations-new', component: EducationsNew},
   { path: '/experiences/new', name: 'experiences-new', component: ExperiencesNew },
   { path: '/skills/new', name: 'skills-new', component: SkillsNew },
-  { path: '/educations/:id/edit', name: "educations-edit", component: EducationsEdit}
+  { path: '/educations/:id/edit', name: "educations-edit", component: EducationsEdit},
+  { path: '/skills/:id/edit', name: "skills-edit", component: SkillsEdit}
 ];
 
 const router = new VueRouter({

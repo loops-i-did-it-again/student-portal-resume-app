@@ -1,31 +1,12 @@
 <template>
-  <div class="educations-edit">
-    <h1>Edit Education</h1>
+  <div class="skills-edit">
+    <h1>Edit Skills</h1>
     <div class="form-group">
-      <label>Start Date:</label>
-      <input type="text" class="form-control" v-model="education.start_date" />
+      <label>Name:</label>
+      <input type="text" class="form-control" v-model="skill.name" />
     </div>
-    <div class="form-group">
-      <label>End Date:</label>
-      <input type="text" class="form-control" v-model="education.end_date" />
-    </div>
-    <div class="form-group">
-      <label>Degree:</label>
-      <input type="text" class="form-control" v-model="education.degree" />
-    </div>
-    <div class="form-group">
-      <label>University:</label>
-      <input
-        type="text"
-        class="form-control"
-        v-model="education.university"
-      />
-    </div>
-    <div class="form-group">
-      <label>Details:</label>
-      <input type="text" class="form-control" v-model="education.details" />
       <br />
-      <button v-on:click="updateEducation()">Save Changes</button>
+      <button v-on:click="updateSkills()">Save Changes</button>
     </div>
   </div>
 </template>
@@ -39,30 +20,26 @@ export default {
   data: function() {
     return {
 
-      education:{}
+      skill:{}
     
     };
   },
   created: function() {
-    axios.get(`/api/educations/${this.$route.params.id}`).then((response) => {
+    axios.get(`/api/skills/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.education = response.data;
+      this.skill = response.data;
     });
   },
 
   methods: {
-    updateEducation: function() {
+    updateSkills: function() {
       var params = {
-        start_date: this.education.start_date,
-        end_date: this.education.end_date,
-        degree: this.education.job_title,
-        university: this.education.university,
-        details: this.education.details,
+        name: this.skill.name
       };
       axios
-        .patch(`/api/educations/${this.education.id}`, params)
+        .patch(`/api/skills/${this.skill.id}`, params)
         .then((response) => {
-          this.$router.push(`/students/${this.education.student_id}`);
+          this.$router.push(`/students/${this.skill.id}`);
         });
     },
   },

@@ -236,6 +236,9 @@ export default {
       capstones: [],
     };
   },
+  created: function() {
+    this.indexCapstone();
+  },
   methods: {
     indexCapstone: function() {
       axios.get("/api/capstones").then((response) => {

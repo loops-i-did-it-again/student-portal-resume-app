@@ -16,11 +16,11 @@ const routes = [
   { path: "/", name: "home", component: Home },
   { path: "/about", name: "about", component: About },
   { path: "/login", name: "login", component: Login },
+  { path: "/experiences/:id/edit", name: "experiences-edit", component: ExperiencesEdit},
   { path: "/capstones/new", name: "CapstonesNew", component: CapstonesNew },
   { path: "/students/:id", name: "students-show", component: StudentsShow },
   { path: "/logout", name: "logout", component: Logout },
-  { path: '/educations/new', name: 'educations-new', component: EducationsNew
-  },
+  { path: '/educations/new', name: 'educations-new', component: EducationsNew},
   { path: '/experiences/new', name: 'experiences-new', component: ExperiencesNew },
   { path: '/skills/new', name: 'skills-new', component: SkillsNew },
 ];

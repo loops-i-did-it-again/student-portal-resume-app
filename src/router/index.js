@@ -9,6 +9,7 @@ import Logout from "../views/Logout.vue";
 import EducationsNew from "../views/EducationsNew.vue";
 import ExperiencesNew from "../views/ExperiencesNew.vue";
 import SkillsNew from "../views/SkillsNew.vue";
+import EducationsEdit from "../views/EducationsEdit.vue";
 import ExperiencesEdit from "../views/ExperiencesEdit.vue";
 
 Vue.use(VueRouter);
@@ -32,6 +33,11 @@ const routes = [
     component: ExperiencesNew,
   },
   { path: "/skills/new", name: "skills-new", component: SkillsNew },
+  {
+    path: "/educations/:id/edit",
+    name: "educations-edit",
+    component: EducationsEdit,
+  },
 ];
 
 const router = new VueRouter({

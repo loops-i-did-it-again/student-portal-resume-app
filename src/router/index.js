@@ -9,6 +9,7 @@ import Logout from "../views/Logout.vue";
 import EducationsNew from "../views/EducationsNew.vue"
 import ExperiencesNew from "../views/ExperiencesNew.vue"
 import SkillsNew from "../views/SkillsNew.vue"
+import ExperiencesEdit from "../views/ExperiencesEdit.vue"
 
 Vue.use(VueRouter);
 

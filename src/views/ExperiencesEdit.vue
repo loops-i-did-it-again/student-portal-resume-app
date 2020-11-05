@@ -38,20 +38,12 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      experience: [
-        {
-          id: 1,
-          start_date: "November 5th",
-          end_date: "November 6th",
-          job_title: "worker",
-          company_name: "wow!",
-          details: "i did a good job",
-        },
-      ],
+      experience: {}
+    
     };
   },
   created: function() {
-    axios.get(`/api/experiences/1`).then((response) => {
+    axios.get(`/api/experiences/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.experience = response.data;
     });

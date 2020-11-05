@@ -33,8 +33,35 @@
         <p>Start Date: {{ experience.startDate }}</p>
         <p>End Date: {{ experience.endDate }}</p>
         <p>Details: {{ experience.details }}</p>
-        <router-link :to="`/experiences/${experience.id}`">Edit</router-link>
+        <button v-on:click="showExperience(experience)">Edit</button>
+        <!-- <router-link :to="`/experiences/${experience.id}`">Edit</router-link> -->
         <p>-------------------------------</p>
+
+        <dialog id="experience-details">
+          <form method="dialog">
+            <h2>Experience Info</h2>
+            <p>
+              Job Title: <input type="text" v-model="experience.jobTitle" />
+            </p>
+            <p>
+              Company Name:
+              <input type="text" v-model="experience.companyName" />
+            </p>
+            <p>
+              Start Date:
+              <input type="text" v-model="experience.startDate" />
+            </p>
+            <p>
+              End Date:
+              <input type="text" v-model="experience.endDate" />
+            </p>
+            <p>Details: <input type="text" v-model="experience.details" /></p>
+            <button v-on:click="updateExperience(currentExperience)">
+              Update Experierence
+            </button>
+            <button>Close</button>
+          </form>
+        </dialog>
       </div>
     </div>
 
@@ -48,7 +75,34 @@
         <p>Start Date: {{ education.startDate }}</p>
         <p>End Date: {{ education.endDate }}</p>
         <p>Details: {{ education.details }}</p>
-        <router-link :to="`/educations/${education.id}`">Edit</router-link>
+        <button v-on:click="showEducation(education)">Edit</button>
+
+        <dialog id="education-details">
+          <form method="dialog">
+            <h2>Education Info</h2>
+            <p>
+              University: <input type="text" v-model="education.university" />
+            </p>
+            <p>
+              Degree:
+              <input type="text" v-model="education.degree" />
+            </p>
+            <p>
+              Start Date:
+              <input type="text" v-model="education.startDate" />
+            </p>
+            <p>
+              End Date:
+              <input type="text" v-model="education.endDate" />
+            </p>
+            <p>Details: <input type="text" v-model="education.details" /></p>
+            <button v-on:click="updateEducation(currentEducation)">
+              Update Education
+            </button>
+            <button>Close</button>
+          </form>
+        </dialog>
+
         <p>-------------------------------</p>
       </div>
     </div>
@@ -59,7 +113,19 @@
       <div v-for="skill in skills">
         <p>id: {{ skill.id }}</p>
         <p>Skill: {{ skill.name }}</p>
-        <router-link :to="`/skills/${skill.id}`">Edit</router-link>
+        <button v-on:click="showSkill(skill)">Edit</button>
+
+        <dialog id="skill-details">
+          <form method="dialog">
+            <h2>Skill</h2>
+            <p>Name: <input type="text" v-model="skill.name" /></p>
+            <button v-on:click="updateSkill(currentSkill)">
+              Update Skill
+            </button>
+            <button>Close</button>
+          </form>
+        </dialog>
+
         <p>-------------------------------</p>
       </div>
     </div>
@@ -70,23 +136,50 @@
 export default {
   data: function() {
     return {
-      student: {
-        id: 1,
-        firstName: "Robin",
-        lastName: "Soto",
-        email: "robin@robin.com",
-        phoneNumber: "555-555-5555",
-        bio: "Living the dream",
-        linkedinUrl: "...",
-        twitterUrl: "@robin",
-        personalUrl: "...",
-        resumeUrl: "...",
-        githubUrl: "...",
-        photoUrl: "...",
-      },
+      currentEducation: {},
+      currentExperience: {},
+      currentSkill: {},
+      student: [
+        {
+          id: 1,
+          firstName: "Robin",
+          lastName: "Soto",
+          email: "robin@robin.com",
+          phoneNumber: "555-555-5555",
+          bio: "Living the dream",
+          linkedinUrl: "...",
+          twitterUrl: "@robin",
+          personalUrl: "...",
+          resumeUrl: "...",
+          githubUrl: "...",
+          photoUrl: "...",
+        },
+        {
+          id: 2,
+          firstName: "Robin",
+          lastName: "Soto",
+          email: "robin@robin.com",
+          phoneNumber: "555-555-5555",
+          bio: "Living the dream",
+          linkedinUrl: "...",
+          twitterUrl: "@robin",
+          personalUrl: "...",
+          resumeUrl: "...",
+          githubUrl: "...",
+          photoUrl: "...",
+        },
+      ],
       experiences: [
         {
           id: 1,
+          startDate: "1/1/2020",
+          endDate: "1/1/2020",
+          jobTitle: "boss",
+          companyName: "Company O' Bosses",
+          details: "we all bosses",
+        },
+        {
+          id: 2,
           startDate: "1/1/2020",
           endDate: "1/1/2020",
           jobTitle: "boss",
@@ -103,14 +196,52 @@ export default {
           university: "University of Sleep",
           details: "intensive Sleep fieldwork",
         },
+        {
+          id: 2,
+          startDate: "1/1/2020",
+          endDate: "1/1/2020",
+          degree: "Masters of Sleep",
+          university: "University of Sleep",
+          details: "intensive Sleep fieldwork",
+        },
       ],
       skills: [
         {
           id: 1,
           name: "sleeping",
         },
+        {
+          id: 2,
+          name: "sleeping",
+        },
       ],
     };
+  },
+  methods: {
+    // Experience Methods
+    showExperience: function(experience) {
+      this.currentExperience = experience;
+      document.querySelector("#experience-details").showModal();
+    },
+    updateExperience: function(experience) {
+      return console.log(experience);
+    },
+    // Education Methods
+    showEducation: function(education) {
+      this.currentEducation = education;
+      document.querySelector("#education-details").showModal();
+    },
+    updateEducation: function(education) {
+      return console.log(education);
+    },
+    // Skill Methods
+    showSkill: function(skill) {
+      this.currentEducation = skill;
+      document.querySelector("#skill-details").showModal();
+    },
+    updateSkill: function(skill) {
+      return console.log(skill);
+    },
   },
 };
 </script>

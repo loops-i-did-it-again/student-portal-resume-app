@@ -132,27 +132,28 @@
         </dialog> -->
 
         <p>-------------------------------</p>
-
-        <div>
-          <h4>Capstones</h4>
-          <router-link :to="`/capstones/new`">NEW</router-link>
-          <div v-for="capstone in capstones">
-            <p>Name: {{ capstone.name }}</p>
-            <p>Description: {{ capstone.discription }}</p>
-            <p>Captsone Url: {{ capstone.capstone_url }}</p>
-            <p>Screenshot Url: {{ capstone.screenshot_url }}</p>
-            <router-link :to="`/capstones/${capstone.id}`">Edit</router-link>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div>
+      <h4>Capstones</h4>
+      <router-link :to="`/capstones/new`">NEW</router-link>
+      <div v-for="capstone in capstones">
+        <p>Name: {{ capstone.name }}</p>
+        <p>Description: {{ capstone.discription }}</p>
+        <p>Captsone Url: {{ capstone.capstone_url }}</p>
+        <p>Screenshot Url: {{ capstone.screenshot_url }}</p>
+        <router-link :to="`/capstones/${capstone.id}`">Edit</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data: function() {
     return {
+      currentCapstone: {},
       currentEducation: {},
       currentExperience: {},
       currentSkill: {},
@@ -235,31 +236,41 @@ export default {
       capstones: [],
     };
   },
-  // methods: {
-  //   // Experience Methods
-  //   showExperience: function(experience) {
-  //     this.currentExperience = experience;
-  //     document.querySelector("#experience-details").showModal();
-  //   },
-  //   updateExperience: function(experience) {
-  //     return console.log(experience);
-  //   },
-  //   // Education Methods
-  //   showEducation: function(education) {
-  //     this.currentEducation = education;
-  //     document.querySelector("#education-details").showModal();
-  //   },
-  //   updateEducation: function(education) {
-  //     return console.log(education);
-  //   },
-  //   // Skill Methods
-  //   showSkill: function(skill) {
-  //     this.currentEducation = skill;
-  //     document.querySelector("#skill-details").showModal();
-  //   },
-  //   updateSkill: function(skill) {
-  //     return console.log(skill);
-  //   },
-  // },
+  created: function() {
+    this.indexCapstone();
+  },
+  methods: {
+    indexCapstone: function() {
+      axios.get("/api/capstones").then((response) => {
+        console.log(response.data);
+        this.capstones = response.data;
+      });
+    },
+  },
 };
+//   // Experience Methods
+//   showExperience: function(experience) {
+//     this.currentExperience = experience;
+//     document.querySelector("#experience-details").showModal();
+//   },
+//   updateExperience: function(experience) {
+//     return console.log(experience);
+//   },
+//   // Education Methods
+//   showEducation: function(education) {
+//     this.currentEducation = education;
+//     document.querySelector("#education-details").showModal();
+//   },
+//   updateEducation: function(education) {
+//     return console.log(education);
+//   },
+//   // Skill Methods
+//   showSkill: function(skill) {
+//     this.currentEducation = skill;
+//     document.querySelector("#skill-details").showModal();
+//   },
+//   updateSkill: function(skill) {
+//     return console.log(skill);
+//   },
+// },
 </script>

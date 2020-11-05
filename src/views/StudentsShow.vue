@@ -129,6 +129,11 @@
         <p>-------------------------------</p>
       </div>
     </div>
+
+    <!-- Capstone Model Info -->
+    <div>
+      <h4>Capstone</h4>
+    </div>
   </div>
 </template>
 
@@ -241,6 +246,9 @@ export default {
     },
     updateSkill: function(skill) {
       return console.log(skill);
+    },
+    updateCapstone: function(capstone) {
+      return console.log(capstone);
     },
   },
 };

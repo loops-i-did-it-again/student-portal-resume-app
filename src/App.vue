@@ -6,7 +6,7 @@
       <router-link to="/students/1">My Profile</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |
-      <router-link to="/capstonenew">New Capstone</router-link>
+      <router-link to="/capstone/new">New Capstone</router-link>
     </div>
     <router-view />
   </div>

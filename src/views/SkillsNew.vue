@@ -1,6 +1,6 @@
 <template>
   <div class="skills-new">
-    <form v-on:submit.prevent="createSkills()">
+    <form v-on:submit.prevent="createSkill()">
       <h1>New Skills</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -36,7 +36,7 @@ export default {
         student_id: this.student_id,
       };
       axios.post("/api/skills", params).then((response) => {
-        this.$router.push("/skills");
+        this.$router.push(`/students/${this.student_id}`);
       });
     },
   },

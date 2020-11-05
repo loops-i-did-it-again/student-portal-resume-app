@@ -18,7 +18,7 @@ export default {
       newCapstoneName: "",
       newCapstoneDescription: "",
       newCapstoneURL: "",
-      newCapstoneSnapshot: "",
+      newCapstoneSnapshotURL: "",
     };
   },
   created: function() {},
@@ -30,6 +30,15 @@ export default {
         URL: this.newCapstoneURL,
         Snapshot: this.newCapstoneSnapshot,
       };
+      axios
+        .post("/api/capstones", params)
+        .then((response) => {
+          console.log("Success", response.data);
+          this.capstones.push(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data.errors);
+        });
     },
   },
 };

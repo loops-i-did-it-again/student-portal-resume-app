@@ -140,13 +140,6 @@
         <p>URL: {{ capstone.url }}</p>
         <p>Snapshot: {{ capstone.snapshot_url }}</p>
         <button v-on:click="showCapstone(capstone)">Edit</button>
-
-        <dialog id="capstone-details">
-          <form method="dialog">
-            <h2>Capstone</h2>
-            <p></p>
-          </form>
-        </dialog>
       </div>
     </div>
   </div>
@@ -237,6 +230,7 @@ export default {
           name: "sleeping",
         },
       ],
+      capstones: "",
     };
   },
   created: function() {
@@ -267,19 +261,11 @@ export default {
     updateSkill: function(skill) {
       return console.log(skill);
     },
-    updateCapstone: function(capstone) {
-      return console.log(capstone);
-    },
-
-    showCapstone: function(capstone) {
-      this.currentCapstone = capstone;
-      document.querySelector("#capstone-details").showModal();
-    },
     indexCapstone: function() {
-      axios.get("/api/capstones").then((respone) => {
+      axios.get("/api/capstones").then((response) => {
         console.log(response.data);
-        this.capstones = response.data
-      }
+        this.capstones = response.data;
+      });
     },
   },
 };

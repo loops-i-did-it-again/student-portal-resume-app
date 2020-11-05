@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Login from "../views/Login.vue";
-import Logout from "../views/Logout.vue";
 import CapstonesNew from "../views/CapstoneNew.vue";
 import StudentsShow from "../views/StudentsShow.vue";
+import Logout from "../views/Logout.vue";
 
 Vue.use(VueRouter);
 

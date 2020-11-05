@@ -26,18 +26,19 @@
     <!-- Experience Model Data -->
     <div>
       <h4>Experiences</h4>
+      <router-link :to="`/experiences/new`">NEW</router-link>
       <div v-for="experience in experiences">
         <p>id: {{ experience.id }}</p>
         <p>Job Title: {{ experience.jobTitle }}</p>
         <p>Comapny Name: {{ experience.companyName }}</p>
         <p>Start Date: {{ experience.startDate }}</p>
         <p>End Date: {{ experience.endDate }}</p>
-        <p>Details: {{ experience.details }}</p>
-        <button v-on:click="showExperience(experience)">Edit</button>
-        <!-- <router-link :to="`/experiences/${experience.id}`">Edit</router-link> -->
+        <!-- <p>Details: {{ experience.details }}</p>
+        <button v-on:click="showExperience(experience)">Edit</button> -->
+        <router-link :to="`/experiences/${experience.id}`">Edit</router-link>
         <p>-------------------------------</p>
 
-        <dialog id="experience-details">
+        <!-- <dialog id="experience-details">
           <form method="dialog">
             <h2>Experience Info</h2>
             <p>
@@ -61,13 +62,14 @@
             </button>
             <button>Close</button>
           </form>
-        </dialog>
+        </dialog> -->
       </div>
     </div>
 
     <!-- Education Model Data -->
     <div>
       <h4>Educations</h4>
+      <router-link :to="`/educations/new`">NEW</router-link>
       <div v-for="education in educations">
         <p>id: {{ education.id }}</p>
         <p>University: {{ education.university }}</p>
@@ -75,9 +77,10 @@
         <p>Start Date: {{ education.startDate }}</p>
         <p>End Date: {{ education.endDate }}</p>
         <p>Details: {{ education.details }}</p>
-        <button v-on:click="showEducation(education)">Edit</button>
+        <!-- <button v-on:click="showEducation(education)">Edit</button> -->
+        <router-link :to="`/educations/${education.id}`">Edit</router-link>
 
-        <dialog id="education-details">
+        <!-- <dialog id="education-details">
           <form method="dialog">
             <h2>Education Info</h2>
             <p>
@@ -101,7 +104,7 @@
             </button>
             <button>Close</button>
           </form>
-        </dialog>
+        </dialog> -->
 
         <p>-------------------------------</p>
       </div>
@@ -110,12 +113,14 @@
     <!-- Skill Model Info -->
     <div>
       <h4>Skills</h4>
+      <router-link :to="`/skills/new`">NEW</router-link>
       <div v-for="skill in skills">
         <p>id: {{ skill.id }}</p>
         <p>Skill: {{ skill.name }}</p>
-        <button v-on:click="showSkill(skill)">Edit</button>
+        <!-- <button v-on:click="showSkill(skill)">Edit</button> -->
+        <router-link :to="`/skills/${skills.id}`">Edit</router-link>
 
-        <dialog id="skill-details">
+        <!-- <dialog id="skill-details">
           <form method="dialog">
             <h2>Skill</h2>
             <p>Name: <input type="text" v-model="skill.name" /></p>
@@ -124,9 +129,21 @@
             </button>
             <button>Close</button>
           </form>
-        </dialog>
+        </dialog> -->
 
         <p>-------------------------------</p>
+
+        <div>
+          <h4>Capstones</h4>
+          <router-link :to="`/capstones/new`">NEW</router-link>
+          <div v-for="capstone in capstones">
+            <p>Name: {{ capstone.name }}</p>
+            <p>Description: {{ capstone.discription }}</p>
+            <p>Captsone Url: {{ capstone.capstone_url }}</p>
+            <p>Screenshot Url: {{ capstone.screenshot_url }}</p>
+            <router-link :to="`/capstones/${capstone.id}`">Edit</router-link>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -230,37 +247,10 @@ export default {
           name: "sleeping",
         },
       ],
-      capstones: "",
+      capstones: [],
     };
   },
-  created: function() {
-    this.indexCapstone();
-  },
   methods: {
-    // Experience Methods
-    showExperience: function(experience) {
-      this.currentExperience = experience;
-      document.querySelector("#experience-details").showModal();
-    },
-    updateExperience: function(experience) {
-      return console.log(experience);
-    },
-    // Education Methods
-    showEducation: function(education) {
-      this.currentEducation = education;
-      document.querySelector("#education-details").showModal();
-    },
-    updateEducation: function(education) {
-      return console.log(education);
-    },
-    // Skill Methods
-    showSkill: function(skill) {
-      this.currentEducation = skill;
-      document.querySelector("#skill-details").showModal();
-    },
-    updateSkill: function(skill) {
-      return console.log(skill);
-    },
     indexCapstone: function() {
       axios.get("/api/capstones").then((response) => {
         console.log(response.data);
@@ -269,4 +259,29 @@ export default {
     },
   },
 };
+//   // Experience Methods
+//   showExperience: function(experience) {
+//     this.currentExperience = experience;
+//     document.querySelector("#experience-details").showModal();
+//   },
+//   updateExperience: function(experience) {
+//     return console.log(experience);
+//   },
+//   // Education Methods
+//   showEducation: function(education) {
+//     this.currentEducation = education;
+//     document.querySelector("#education-details").showModal();
+//   },
+//   updateEducation: function(education) {
+//     return console.log(education);
+//   },
+//   // Skill Methods
+//   showSkill: function(skill) {
+//     this.currentEducation = skill;
+//     document.querySelector("#skill-details").showModal();
+//   },
+//   updateSkill: function(skill) {
+//     return console.log(skill);
+//   },
+// },
 </script>

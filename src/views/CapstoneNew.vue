@@ -9,28 +9,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import axios from "axios";
-export default {
-  data: function() {
-    return {
-      newCapstoneName: "",
-      newCapstoneDescription: "",
-      newCapstoneURL: "",
-      newCapstoneSnapshot: "",
-    };
-  },
-  created: function() {},
-  methods: {
-    createCapstone: function() {
-      var params = {
-        name: this.newCapstoneName,
-        Description: this.newCapstoneDescription,
-        URL: this.newCapstoneURL,
-        Snapshot: this.newCapstoneSnapshot,
-      };
-    },
-  },
-};
-</script>

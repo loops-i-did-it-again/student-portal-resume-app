@@ -132,31 +132,17 @@
         </dialog> -->
 
         <p>-------------------------------</p>
-
-        <div>
-          <h4>Capstones</h4>
-          <router-link :to="`/capstones/new`">NEW</router-link>
-          <div v-for="capstone in capstones">
-            <p>Name: {{ capstone.name }}</p>
-            <p>Description: {{ capstone.discription }}</p>
-            <p>Captsone Url: {{ capstone.capstone_url }}</p>
-            <p>Screenshot Url: {{ capstone.screenshot_url }}</p>
-            <router-link :to="`/capstones/${capstone.id}`">Edit</router-link>
-          </div>
-        </div>
       </div>
     </div>
-
-    <!-- Capstone Model Info -->
     <div>
-      <h4>Capstone</h4>
+      <h4>Capstones</h4>
+      <router-link :to="`/capstones/new`">NEW</router-link>
       <div v-for="capstone in capstones">
-        <p>id: {{ capstone.id }}</p>
         <p>Name: {{ capstone.name }}</p>
-        <p>Description: {{ capstone.description }}</p>
-        <p>URL: {{ capstone.url }}</p>
-        <p>Snapshot: {{ capstone.snapshot_url }}</p>
-        <button v-on:click="showCapstone(capstone)">Edit</button>
+        <p>Description: {{ capstone.discription }}</p>
+        <p>Captsone Url: {{ capstone.capstone_url }}</p>
+        <p>Screenshot Url: {{ capstone.screenshot_url }}</p>
+        <router-link :to="`/capstones/${capstone.id}`">Edit</router-link>
       </div>
     </div>
   </div>

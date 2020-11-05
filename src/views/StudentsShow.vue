@@ -44,7 +44,7 @@
               Job Title: <input type="text" v-model="experience.jobTitle" />
             </p>
             <p>
-              Comapny Name:
+              Company Name:
               <input type="text" v-model="experience.companyName" />
             </p>
             <p>

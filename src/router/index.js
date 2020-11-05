@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Login from "../views/Login.vue";
+import CapstonesNew from "../views/CapstoneNew.vue";
+import StudentsShow from "../views/StudentsShow.vue";
 import Logout from "../views/Logout.vue";
-import CapstoneNew from "../views/CapstoneNew.vue";
 
 Vue.use(VueRouter);
 
@@ -12,7 +13,8 @@ const routes = [
   { path: "/", name: "home", component: Home },
   { path: "/about", name: "about", component: About },
   { path: "/login", name: "login", component: Login },
-  { path: "/capstonenew", name: "CapstoneNew", component: CapstoneNew },
+  { path: "/capstones/new", name: "CapstonesNew", component: CapstonesNew },
+  { path: "/students/:id", name: "students-show", component: StudentsShow },
   { path: "/logout", name: "logout", component: Logout },
 ];
 

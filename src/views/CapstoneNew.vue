@@ -1,5 +1,5 @@
 <template>
-  <div class="capstonenew">
+  <div class="capstones-new">
     <div>
       Name: <input type="text" /><br />
       Description: <input type="text" /><br />

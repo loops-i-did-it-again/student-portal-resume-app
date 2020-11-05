@@ -133,14 +133,31 @@
     <!-- Capstone Model Info -->
     <div>
       <h4>Capstone</h4>
+      <div v-for="capstone in capstones">
+        <p>id: {{ capstone.id }}</p>
+        <p>Name: {{ capstone.name }}</p>
+        <p>Description: {{ capstone.description }}</p>
+        <p>URL: {{ capstone.url }}</p>
+        <p>Snapshot: {{ capstone.snapshot_url }}</p>
+        <button v-on:click="showCapstone(capstone)">Edit</button>
+
+        <dialog id="capstone-details">
+          <form method="dialog">
+            <h2>Capstone</h2>
+            <p></p>
+          </form>
+        </dialog>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data: function() {
     return {
+      currentCapstone: {},
       currentEducation: {},
       currentExperience: {},
       currentSkill: {},
@@ -222,6 +239,9 @@ export default {
       ],
     };
   },
+  created: function() {
+    this.indexCapstone();
+  },
   methods: {
     // Experience Methods
     showExperience: function(experience) {
@@ -249,6 +269,17 @@ export default {
     },
     updateCapstone: function(capstone) {
       return console.log(capstone);
+    },
+
+    showCapstone: function(capstone) {
+      this.currentCapstone = capstone;
+      document.querySelector("#capstone-details").showModal();
+    },
+    indexCapstone: function() {
+      axios.get("/api/capstones").then((respone) => {
+        console.log(response.data);
+        this.capstones = response.data
+      }
     },
   },
 };

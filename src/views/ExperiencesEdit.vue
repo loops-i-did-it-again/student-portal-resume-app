@@ -72,6 +72,12 @@ export default {
           this.$router.push(`/students/${this.experience.student_id}`);
         });
     },
+    destroyExperience: function(experience) {
+      axios.delete(`/api/experiences/${experience.id}`).then((response) => {
+        console.log("Success", response.data);
+        this.$router.push("/experiences");
+      });
+    },
   },
 };
 </script>
